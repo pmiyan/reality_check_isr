@@ -1,0 +1,15 @@
+! name: News Goggle
+! description: My goggles establishing a ground truth to boost trusted sources that are listed by https://en.wikipedia.org/wiki/Wikipedia:Reliable_sources/Perennial_sources#Facebook
+! public: false
+! author: Prachi Miyan
+
+!Needs to be updated - testing for now
+
+$discard
+$downrank=2,site=cnn.com
+$downrank=2,site=foxnews.com
+$downrank=3,site=dailybeast.com
+
+$boost=3,site=abcnews.go.com
+$boost=4,site=bbc.com
+$boost=5,site=apnews.com
