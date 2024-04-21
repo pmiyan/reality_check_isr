@@ -51,7 +51,7 @@ for url in url_list:
                  f"""
                  Context:
                  {documents[0].text}
-                 Statement: 'Donald Trump got convicted of fraud'.
+                 Statement: 'Taylor Swift is a rap artist'.
                  """},
         ]
     )
