@@ -1,11 +1,8 @@
-from pprint import pprint
 from brave import Brave
 
 def get_news_documents(user_query, client):
 
     brave = Brave()
-
-    user_query = "Donald Trump got convicted of fraud"
 
     completion = client.chat.completions.create(
       model="gpt-3.5-turbo",
@@ -30,7 +27,7 @@ def get_news_documents(user_query, client):
                                   # result_filter='news',
                                   freshness='py',
                                   spellcheck=True,
-                                  goggles_id="https://raw.githubusercontent.com/allsides-news/brave-goggles/main/left.goggles",
+                                  goggles_id="https://gist.githubusercontent.com/pmiyan/30faf37d38f86d031cccddbda15c58ef/raw/647c44f1918f1e993e006c9c3bde498aedad0127/left.goggles",
                                   raw=True) #
 
     news_results = search_results["web"]["results"]
