@@ -15,6 +15,7 @@ print("similarity time:", time() - similarity_time_start)
 from score_and_evaluate import evaluate_responses
 from dotenv import load_dotenv
 load_dotenv()
+import threading
 
 print("import time:", time() - import_time_start)
 
@@ -29,7 +30,9 @@ def process_user_query(user_query):
     query_docs = get_news_documents(user_query, client)
     doc_urls = [doc["url"] for doc in query_docs]
     responses = {}
-    for i, url in enumerate(doc_urls):
+
+    threads = []
+    def open_ai_query(url, user_query, client):
         document_text = retrieve_url_data(url)
         content = """
         {url}
@@ -41,10 +44,21 @@ def process_user_query(user_query):
         print(response)
         responses[url] = response
 
+    
+
+    for i, url in enumerate(doc_urls):
+        execThread = threading.Thread(target=open_ai_query, args = (url,user_query,client, responses,))
+        threads.append(execThread)
+        execThread.start()
+
+    for exec_thread in threads:
+        exec_thread.join()
+        
     final_response = evaluate_responses(responses, client)
     # score = final_response[0]
     # score_context = final_response[1]
     print(final_response)
+
     return True
 
 
