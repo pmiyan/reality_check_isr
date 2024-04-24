@@ -1,27 +1,12 @@
-from time import time
-
-import_time_start = time()
 from brave_search import get_news_documents
-print("import time:", time() - import_time_start)
-
-retrieval_time_start = time()
 from retrieval import retrieve_url_data
-print("retrieval time:", time() - retrieval_time_start)
-
-similarity_time_start = time()
 from similarity import get_similarity
-print("similarity time:", time() - similarity_time_start)
-
 from score_and_evaluate import evaluate_responses
+import streamlit as st
 from dotenv import load_dotenv
 load_dotenv()
-
-print("import time:", time() - import_time_start)
-
-openai_time_start = time()
 from openai import OpenAI
 client = OpenAI()
-print("openai time:", time() - openai_time_start)
 
 
 def process_user_query(user_query):
@@ -44,12 +29,17 @@ def process_user_query(user_query):
     final_response = evaluate_responses(responses, client)
     # score = final_response[0]
     # score_context = final_response[1]
-    print(final_response)
-    return True
+    # print(final_response)
+    return final_response
 
+def main():
+    st.title("Fake News Detection")
+    user_query = st.text_input("Enter your statement to verify it:")
+    if st.button("Verify"):
+        with st.spinner('Processing your query...'):
+            final_response = process_user_query(user_query)
+        st.success('Here is the response:')
+        st.write(final_response)
 
 if __name__ == '__main__':
-    # user_query = input("Enter your statement to verify it:")
-    # user_query = "Donald Trump is being supported by the Republican party to provide funding to Ukraine."
-    user_query = "Mike Jonsen is being suppported by the Democratic party to provide funding to Ukraine."
-    process_user_query(user_query)
+    main()
