@@ -32,7 +32,7 @@ def process_user_query(user_query):
     responses = {}
 
     threads = []
-    def open_ai_query(url, user_query, client):
+    def open_ai_query(url, user_query, client, responses):
         document_text = retrieve_url_data(url)
         content = """
         {url}
