@@ -102,4 +102,4 @@ def evaluate_responses(responses, client):
     print(f"Fake-o-Meter: {fake_o_meter}")
     print(f"Fake-o-Color: {fake_o_color}")
     score_context = generate_text_response(responses, fake_o_meter, score, client)
-    return (score, fake_o_meter, score_context)
+    return (score, fake_o_meter, fake_o_color, score_context)
