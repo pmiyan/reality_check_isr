@@ -23,6 +23,7 @@ def get_news_documents(user_query, client, num_results, inclination):
     googles['left'] = "https://github.com/pmiyan/reality_check_isr/blob/c89507c3d1259b8dcf68d3870c7e3104204ec5a6/left.goggles"
     googles['right'] = "https://github.com/pmiyan/reality_check_isr/blob/c89507c3d1259b8dcf68d3870c7e3104204ec5a6/right.goggles"
     googles['unopinionated'] = "https://github.com/pmiyan/reality_check_isr/blob/c89507c3d1259b8dcf68d3870c7e3104204ec5a6/neutral.goggles"
+    googles['default'] = "https://raw.githubusercontent.com/pmiyan/reality_check_isr/5993f835cb12e59efa2a7273adf17c7a088d088e/goggles"
     #create custom goggles - unbiased
     selected_google = googles[inclination]
 
