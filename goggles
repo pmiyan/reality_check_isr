@@ -5,7 +5,7 @@
 ! avatar: #2e64a0
 
 $discard
-$downrank,site=washingtonpost.
+$downrank,site=washingtonpost.com
 $downrank,site=adfontesmedia.com
 $downrank,site=company-histories.com
 $downrank,site=fundinguniverse.com
@@ -119,12 +119,15 @@ $downrank,site=wordpress.com
 $downrank,site=youtube.com
 $downrank,site=zoominfo.com
 $downrank,site=zerohedge.com
+$downrank,site=npr.org
+$downrank,site=abcnews.go.com
+$downrank,site=bloomberg.com
 
 
 
 
 
-$boost=4,site=abcnews.com
+
 $boost=4,site=adfontesmedia.com
 $boost=3,site=theage.com.au
 $boost=3,site=afp.com
@@ -157,7 +160,6 @@ $boost=4,site=behindthevoiceactors.com
 $boost=4,site=bellingcat.com
 $boost=1,site=biography.com
 $boost=1,site=blogspot.com
-$boost=3,site=bloomberg.com
 $boost=4,site=businessweek.com
 $boost=2,site=boingboing.net
 $boost=4,site=burkespeerage.com
@@ -282,7 +284,6 @@ $boost=3,site=newslaundry.com
 $boost=1,site=newsweek.com
 $boost=1,site=thenextweb.com
 $boost=4,site=nme.com
-$boost=2,site=npr.org
 $boost=3,site=oko.press
 $boost=1,site=lapatilla.com
 $boost=3,site=people.com
@@ -355,7 +356,6 @@ $boost=3,site=voanews.com
 $boost=4,site=vox.com
 $boost=4,site=wsj.com
 $boost=1,site=washingtonexaminer.com
-$boost=4,site=washingtonpost.com
 $boost=1,site=washingtontimes.com
 $boost=1,site=wikidata.org
 $boost=1,site=wikinews.org
