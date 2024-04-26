@@ -27,9 +27,9 @@ def open_ai_query(url, user_query, llm, responses):
     responses[url] = response
 
 
-def process_user_query(user_query, num_results):
+def process_user_query(user_query, num_results, inclination):
     print("getting news documents...")
-    query_docs = get_news_documents(user_query, client, num_results)
+    query_docs = get_news_documents(user_query, client, num_results, inclination)
     doc_urls = [doc["url"] for doc in query_docs]
     single_responses = {}
     threads = []
@@ -59,13 +59,14 @@ def main():
         st.markdown(
             f'<div style="border: 2px solid {color}; border-radius: 5px; padding: 10px; margin-bottom: 10px;"><h3 style="color: {color};">{title}</h3><p>{content}</p></div>',
             unsafe_allow_html=True)
-
+    google_list = ["left", "right", "neutral"]
     st.title("Fake News Detection")
     user_query = st.text_input("Enter your statement to verify it:")
-
+    inclination = st.selectbox(label = "Select Inclination", placeholder= "select your inclination", options= google_list, index= None )
+    #print(f'inclination selected :  {inclination}' )
     if st.button("Verify"):
         with st.spinner('Processing your query...'):
-            final_response, single_responses = process_user_query(user_query, num_results)
+            final_response, single_responses = process_user_query(user_query, num_results, inclination)
         st.markdown('<div style= color: #ae7bff; border-radius: 5px;"><p>Here is the response:</p></div>',
                     unsafe_allow_html=True)
 
