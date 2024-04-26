@@ -1,0 +1,17 @@
+! name: News from the Neutral Sources
+! description: Rank results to boost content from sources with an AllSides Media Bias Rating™ of Neutral.
+! public: true
+! author: AllSides.com
+! homepage: https://www.allsides.com/
+! avatar: #ca0800
+
+$boost=4,site=theage.com.au
+$boost=4,site=afp.com
+$boost=4,site=amnesty.org
+$boost=4,site=adl.org
+$boost=4,site=aon.com
+$boost=4,site=arstechnica.com
+$boost=4,site=apnews.com
+$boost=4,site=theatlantic.com
+$boost=4,site=theaustralian.com.au
+$boost=4,site=wnd.com
