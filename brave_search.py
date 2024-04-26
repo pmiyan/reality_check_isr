@@ -1,6 +1,6 @@
 from brave import Brave
 
-def get_news_documents(user_query, client):
+def get_news_documents(user_query, client, num_results):
 
     brave = Brave()
 
@@ -17,8 +17,6 @@ def get_news_documents(user_query, client):
     )
 
     query = completion.choices[0].message.content
-    num_results = 10
-
     left_goggles = "https://raw.githubusercontent.com/allsides-news/brave-goggles/main/left.goggles"
     right_goggles = "https://raw.githubusercontent.com/allsides-news/brave-goggles/main/right.goggles"
     #create custom goggles - unbiased
