@@ -118,6 +118,7 @@ dependencies:
       - pkginfo==1.10.0
       - platformdirs==4.2.0
       - playwright==1.43.0
+      - plotly==5.21.0
       - pluggy==1.4.0
       - poetry==1.8.2
       - poetry-core==1.9.0
@@ -163,6 +164,7 @@ dependencies:
       - soupsieve==2.5
       - sqlalchemy==2.0.29
       - streamlit==1.33.0
+      - streamviz==5.1
       - striprtf==0.0.26
       - sympy==1.12
       - tenacity==8.2.3
