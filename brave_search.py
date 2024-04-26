@@ -20,10 +20,10 @@ def get_news_documents(user_query, client, num_results, inclination):
     googles = {}
 
   #  googles['left'] = "https://raw.githubusercontent.com/allsides-news/brave-goggles/main/left.goggles"
-    googles['left'] = "https://gist.githubusercontent.com/pmiyan/30faf37d38f86d031cccddbda15c58ef/raw/647c44f1918f1e993e006c9c3bde498aedad0127/left.goggles"
+    googles['left'] = "https://raw.githubusercontent.com/pmiyan/reality_check_isr/5993f835cb12e59efa2a7273adf17c7a088d088e/goggles"
     googles['right'] = "https://raw.githubusercontent.com/allsides-news/brave-goggles/main/right.goggles"
     googles['neutral'] = "https://raw.githubusercontent.com/allsides-news/brave-goggles/main/right.goggles"
-    googles['default'] = "https://gist.githubusercontent.com/pmiyan/30faf37d38f86d031cccddbda15c58ef/raw/647c44f1918f1e993e006c9c3bde498aedad0127/left.goggles"
+    googles['default'] = "https://raw.githubusercontent.com/pmiyan/reality_check_isr/5993f835cb12e59efa2a7273adf17c7a088d088e/goggles"
     #create custom goggles - unbiased
     selected_google = None
     if inclination:
