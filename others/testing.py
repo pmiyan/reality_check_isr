@@ -26,7 +26,7 @@ original_get = requests.get
 
 requests.get = custom_get
 
-url_list = ["https://www.nytimes.com/2024/04/19/style/taylor-swift-lyrics-tortured-poets-department.html", "https://apnews.com/article/gaza-israel-aid-pier-us-military-e988256270fc0067d2f5524fd542a475"]
+url_list = ["https://www.cnn.com/2023/09/26/politics/trump-organization-business-fraud/index.html"]#, "https://apnews.com/article/gaza-israel-aid-pier-us-military-e988256270fc0067d2f5524fd542a475"]
 for url in url_list:
     documents = loader.load_data(urls=[url])
 
@@ -51,9 +51,10 @@ for url in url_list:
                  f"""
                  Context:
                  {documents[0].text}
-                 Statement: Taylor Swift is a rap artist.
+                 Statement: 'Taylor Swift is a rap artist'.
                  """},
         ]
     )
     print(response.choices[0].message.content)
+    print("Hello")
 
