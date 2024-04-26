@@ -105,6 +105,28 @@ def main():
                             ---
                             Context: {response["context"]}
                         """)
+                    st.markdown("""
+                    <style>
+                    .thumbsup {
+                    font-size: 30px;
+                    cursor: pointer;
+                    }
+                    .thumbsdown {
+                    font-size: 30px;
+                    cursor: pointer;
+                    }
+                    </style>
+                    """, unsafe_allow_html=True)
+
+                    col1, col2 = st.columns(2)
+
+                    with col1:
+                        if st.button("👍"):
+                            st.write("Liked!")
+
+                    with col2:
+                        if st.button("👎"):
+                            st.write("Disliked!")
 
             gauge(
                 (final_score + 1) / 2,
