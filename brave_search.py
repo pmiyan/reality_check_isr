@@ -1,6 +1,6 @@
 from brave import Brave
 
-def get_news_documents(user_query, client, num_results):
+def get_news_documents(user_query, client, num_results, inclination):
 
     brave = Brave()
 
@@ -17,15 +17,24 @@ def get_news_documents(user_query, client, num_results):
     )
 
     query = completion.choices[0].message.content
-    left_goggles = "https://raw.githubusercontent.com/allsides-news/brave-goggles/main/left.goggles"
-    right_goggles = "https://raw.githubusercontent.com/allsides-news/brave-goggles/main/right.goggles"
+    googles = {}
+
+  #  googles['left'] = "https://raw.githubusercontent.com/allsides-news/brave-goggles/main/left.goggles"
+    googles['left'] = "https://gist.githubusercontent.com/pmiyan/30faf37d38f86d031cccddbda15c58ef/raw/647c44f1918f1e993e006c9c3bde498aedad0127/left.goggles"
+    googles['right'] = "https://raw.githubusercontent.com/allsides-news/brave-goggles/main/right.goggles"
+    googles['default'] = "https://gist.githubusercontent.com/pmiyan/30faf37d38f86d031cccddbda15c58ef/raw/647c44f1918f1e993e006c9c3bde498aedad0127/left.goggles"
     #create custom goggles - unbiased
+    selected_google = None
+    if inclination:
+        selected_google = googles[inclination]
+    else:
+        selected_google = googles['default']
 
     search_results = brave.search(q=query, count=num_results,
                                   # result_filter='news',
                                   freshness='py',
                                   spellcheck=True,
-                                  goggles_id="https://gist.githubusercontent.com/pmiyan/30faf37d38f86d031cccddbda15c58ef/raw/647c44f1918f1e993e006c9c3bde498aedad0127/left.goggles",
+                                  goggles_id=selected_google,
                                   raw=True) #
 
     news_results = search_results["web"]["results"]
