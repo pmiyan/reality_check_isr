@@ -24,9 +24,10 @@ def retrieve_url_data(url):
     print("retrieving url data...:", url)
     page = requests.get(url, headers=headers)
     soup = BeautifulSoup(page.content, "html.parser")
+    title = soup.title.string
     main_tag = soup.find('main')
     if main_tag:
         data = clean_text(main_tag.getText())
     else:
         data = clean_text(soup.getText())
-    return data
+    return title, data
