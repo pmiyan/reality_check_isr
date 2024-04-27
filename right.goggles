@@ -5,6 +5,15 @@
 ! homepage: https://www.allsides.com/
 ! avatar: #ca0800
 
+
+
+$discard
+$downrank,site=washingtonpost.com
+$downrank,site=npr.org
+$downrank,site=abcnews.go.com
+$downrank,site=bloomberg.com
+
+
 $boost=4,site=wnd.com
 $boost=4,site=weeklystandard.com
 $boost=4,site=prageru.com

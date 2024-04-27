@@ -5,6 +5,13 @@
 ! homepage: https://www.allsides.com/
 ! avatar: #ca0800
 
+$discard
+$downrank,site=washingtonpost.com
+$downrank,site=npr.org
+$downrank,site=abcnews.go.com
+$downrank,site=bloomberg.com
+
+
 $boost=4,site=theage.com.au
 $boost=4,site=afp.com
 $boost=4,site=amnesty.org
