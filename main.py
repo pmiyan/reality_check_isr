@@ -37,6 +37,7 @@ def process_user_query(user_query, num_results, inclination):
 
         threads = []
         for i, url in enumerate(doc_urls):
+            # open_ai_query(url, user_query, client, single_responses)
             execThread = threading.Thread(target=open_ai_query, args=(url, user_query, client, single_responses,))
             threads.append(execThread)
             execThread.start()
@@ -105,31 +106,31 @@ def main():
                             ---
                             Context: {response["context"]}
                         """)
-                        st.markdown("""
-                        <style>
-                        .thumbsup {
-                        font-size: 30px;
-                        cursor: pointer;
-                        }
-                        .thumbsdown {
-                        font-size: 30px;
-                        cursor: pointer;
-                        }
-                        </style>
-                        """, unsafe_allow_html=True)
+                        # st.markdown("""
+                        # <style>
+                        # .thumbsup {
+                        # font-size: 30px;
+                        # cursor: pointer;
+                        # }
+                        # .thumbsdown {
+                        # font-size: 30px;
+                        # cursor: pointer;
+                        # }
+                        # </style>
+                        # """, unsafe_allow_html=True)
 
-                        col1, col2 = st.columns(2)
-
-                        with col1:
-                            counter += 1
-                            if st.button("👍", key=str(counter)):
-                                st.write("Liked!")
-                            
-
-                        with col2:
-                            counter += 1
-                            if st.button("👎", key=str(counter)):
-                                st.write("Disliked!")
+                        # col1, col2 = st.columns(2)
+                        #
+                        # with col1:
+                        #     counter += 1
+                        #     if st.button("👍", key=str(counter)):
+                        #         st.write("Liked!")
+                        #
+                        #
+                        # with col2:
+                        #     counter += 1
+                        #     if st.button("👎", key=str(counter)):
+                        #         st.write("Disliked!")
                             
 
             gauge(
