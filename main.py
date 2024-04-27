@@ -37,7 +37,6 @@ def process_user_query(user_query, num_results, inclination):
 
         threads = []
         for i, url in enumerate(doc_urls):
-            # open_ai_query(url, user_query, client, single_responses)
             execThread = threading.Thread(target=open_ai_query, args=(url, user_query, client, single_responses,))
             threads.append(execThread)
             execThread.start()
