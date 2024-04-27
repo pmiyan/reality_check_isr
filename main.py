@@ -65,7 +65,7 @@ def main():
         st.markdown(
             f'<div style="border: 2px solid {color}; border-radius: 5px; padding: 10px; margin-bottom: 10px;"><h3 style="color: {color};">{title}</h3><p>{content}</p></div>',
             unsafe_allow_html=True)
-    google_list = ["unopinionated", "left", "right", "default"]
+    google_list = ["unopinionated", "left", "right"]
     st.title("Fake News Detection")
     user_query = st.text_input("Enter your statement to verify it:")
     inclination = st.selectbox(label = "Select Political Inclination",  options= google_list)
