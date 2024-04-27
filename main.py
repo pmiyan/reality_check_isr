@@ -66,7 +66,16 @@ def main():
             f'<div style="border: 2px solid {color}; border-radius: 5px; padding: 10px; margin-bottom: 10px;"><h3 style="color: {color};">{title}</h3><p>{content}</p></div>',
             unsafe_allow_html=True)
     google_list = ["unopinionated", "left", "right"]
+    st.markdown(
+        """
+        <div class="topnav">
+          <a href="https://github.com/pmiyan/reality_check_isr">GitHub</a> |
+          <a href="https://youtu.be/VnZSTTxLFkY">YouTube</a>
+        </div>
+        """
+        , unsafe_allow_html=True)
     st.title("Fake News Detection")
+
     user_query = st.text_input("Enter your statement to verify it:")
     inclination = st.selectbox(label = "Select Political Inclination",  options= google_list)
     print(f'inclination selected :  {inclination}' )
