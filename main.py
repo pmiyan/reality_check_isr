@@ -9,7 +9,6 @@ import threading
 from openai import OpenAI
 from urllib.parse import urlparse
 
-
 load_dotenv()
 client = OpenAI()
 
@@ -45,7 +44,9 @@ def process_user_query(user_query, num_results, inclination):
             exec_thread.join()
     except Exception as error:
         print(f'Error Occurred while fetching the query : {str(error)}')
-        return (0.0, 'Sorry, we\'re unable to process your request at this point in time!!, Sometimes we can continue to live on with fake news in our lives... Cheerios!!', '#D3D3D3', ''), single_responses
+        return (0.0,
+                'Sorry, we\'re unable to process your request at this point in time!!, Sometimes we can continue to live on with fake news in our lives... Cheerios!!',
+                '#D3D3D3', ''), single_responses
 
     final_response = evaluate_responses(single_responses, client)
     return final_response, single_responses
@@ -57,6 +58,12 @@ EmojiDict = {
     "NULL": "❓ Uncertain"
 }
 
+ImportanceDict = {
+    "HIGH": 1,
+    "MEDIUM": 0,
+    "LOW": -1
+}
+
 
 def main():
     num_results = 10
@@ -65,15 +72,18 @@ def main():
         st.markdown(
             f'<div style="border: 2px solid {color}; border-radius: 5px; padding: 10px; margin-bottom: 10px;"><h3 style="color: {color};">{title}</h3><p>{content}</p></div>',
             unsafe_allow_html=True)
+
     google_list = ["unopinionated", "left", "right"]
     st.title("Fake News Detection")
     user_query = st.text_input("Enter your statement to verify it:")
-    inclination = st.selectbox(label = "Select Political Inclination",  options= google_list)
-    print(f'inclination selected :  {inclination}' )
-    if st.button("Verify") and user_query :
+    inclination = st.selectbox(label="Select Political Inclination", options=google_list)
+    print(f'inclination selected :  {inclination}')
+
+    if st.button("Verify") and user_query:
         print(f'query : {user_query}')
         with st.spinner('Processing your query...'):
             final_response, single_responses = process_user_query(user_query, num_results, inclination)
+
         st.markdown('<div style= color: #ae7bff; border-radius: 5px;"><p>Here is the response:</p></div>',
                     unsafe_allow_html=True)
 
@@ -85,7 +95,9 @@ def main():
             with st.expander("See sources"):
                 tabs = st.tabs(["Source {}".format(x) for x in range(1, len(single_responses) + 1)])
                 counter = 1
-                for (url, response), tab in zip(single_responses.items(), tabs):
+                sorted_responses = dict(sorted(single_responses.items(), key=lambda item: -ImportanceDict[item[1]['confidence']]))
+                print(sorted_responses)
+                for (url, response), tab in zip(sorted_responses.items(), tabs):
                     base_url = urlparse(url).netloc
                     with tab:
                         header = f"[{response['title']}]({url})"
@@ -130,7 +142,6 @@ def main():
                         #     counter += 1
                         #     if st.button("👎", key=str(counter)):
                         #         st.write("Disliked!")
-                            
 
             gauge(
                 (final_score + 1) / 2,
