@@ -84,7 +84,7 @@ def main():
         if len(single_responses) > 0:
             with st.expander("See sources"):
                 tabs = st.tabs(["Source {}".format(x) for x in range(1, len(single_responses) + 1)])
-
+                counter = 1
                 for (url, response), tab in zip(single_responses.items(), tabs):
                     base_url = urlparse(url).netloc
                     with tab:
@@ -105,28 +105,32 @@ def main():
                             ---
                             Context: {response["context"]}
                         """)
-                    st.markdown("""
-                    <style>
-                    .thumbsup {
-                    font-size: 30px;
-                    cursor: pointer;
-                    }
-                    .thumbsdown {
-                    font-size: 30px;
-                    cursor: pointer;
-                    }
-                    </style>
-                    """, unsafe_allow_html=True)
+                        st.markdown("""
+                        <style>
+                        .thumbsup {
+                        font-size: 30px;
+                        cursor: pointer;
+                        }
+                        .thumbsdown {
+                        font-size: 30px;
+                        cursor: pointer;
+                        }
+                        </style>
+                        """, unsafe_allow_html=True)
 
-                    col1, col2 = st.columns(2)
+                        col1, col2 = st.columns(2)
 
-                    with col1:
-                        if st.button("👍"):
-                            st.write("Liked!")
+                        with col1:
+                            counter += 1
+                            if st.button("👍", key=str(counter)):
+                                st.write("Liked!")
+                            
 
-                    with col2:
-                        if st.button("👎"):
-                            st.write("Disliked!")
+                        with col2:
+                            counter += 1
+                            if st.button("👎", key=str(counter)):
+                                st.write("Disliked!")
+                            
 
             gauge(
                 (final_score + 1) / 2,
