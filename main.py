@@ -70,7 +70,8 @@ def main():
         """
         <div class="topnav">
           <a href="https://github.com/pmiyan/reality_check_isr">GitHub</a> |
-          <a href="https://youtu.be/VnZSTTxLFkY">YouTube</a>
+          <a href="https://youtu.be/VnZSTTxLFkY">YouTube</a> | 
+          <a href="https://drive.google.com/file/d/1cv3Mu0V7RkKhWaJ1YU44zBQwjDcfzwEu/view?usp=sharing">Presentation</a>
         </div>
         """
         , unsafe_allow_html=True)
